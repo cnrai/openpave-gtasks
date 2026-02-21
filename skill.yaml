@@ -1,0 +1,195 @@
+# OpenPAVE Google Tasks Skill
+# Manage Google Tasks securely using OAuth
+
+name: gtasks
+version: 1.0.0
+description: Manage Google Tasks securely using OAuth
+
+author:
+  name: OpenPave
+  url: https://github.com/openpave
+
+license: MIT
+homepage: https://github.com/openpave/pave-gtasks
+repository: openpave/pave-gtasks
+
+# Execution pattern
+pattern: sandbox
+entrypoint: index.js
+
+# Available commands
+commands:
+  - name: auth
+    description: Show authentication status
+    options:
+      - --summary
+      - --json
+
+  - name: lists
+    description: List all task lists
+    options:
+      - --max <number>
+      - --summary
+      - --json
+
+  - name: tasks
+    description: List tasks in a task list
+    args:
+      - "[listId]"
+    options:
+      - -l, --list <listId>
+      - -m, --max <count>
+      - --completed
+      - --all
+      - --summary
+      - --full
+      - --json
+
+  - name: add
+    description: Create a new task
+    args:
+      - <title>
+    options:
+      - -l, --list <listId>
+      - -n, --notes <notes>
+      - -d, --due <date>
+      - --summary
+      - --json
+
+  - name: get
+    description: Get task details
+    args:
+      - <listId>
+      - <taskId>
+    options:
+      - --summary
+      - --json
+
+  - name: update
+    description: Update a task
+    args:
+      - <listId>
+      - <taskId>
+    options:
+      - -t, --title <title>
+      - -n, --notes <notes>
+      - -d, --due <date>
+      - --summary
+      - --json
+
+  - name: complete
+    description: Mark task as complete
+    args:
+      - <listId>
+      - <taskId>
+    options:
+      - --summary
+      - --json
+
+  - name: uncomplete
+    description: Mark task as incomplete
+    args:
+      - <listId>
+      - <taskId>
+    options:
+      - --summary
+      - --json
+
+  - name: delete
+    description: Delete a task
+    args:
+      - <listId>
+      - <taskId>
+    options:
+      - --yes
+      - --summary
+      - --json
+
+  - name: clear
+    description: Clear completed tasks
+    args:
+      - <listId>
+    options:
+      - --yes
+      - --summary
+      - --json
+
+  - name: create-list
+    description: Create a new task list
+    args:
+      - <title>
+    options:
+      - --summary
+      - --json
+
+  - name: delete-list
+    description: Delete a task list
+    args:
+      - <listId>
+    options:
+      - --yes
+      - --summary
+      - --json
+
+# Token configuration for secure sandbox access
+tokens:
+  google-tasks:
+    type: oauth
+    description: Google Tasks API OAuth credentials
+    domains:
+      - tasks.googleapis.com
+      - "*.googleapis.com"
+    env:
+      required:
+        - GOOGLE_TASKS_CLIENT_ID
+        - GOOGLE_TASKS_CLIENT_SECRET
+        - GOOGLE_TASKS_REFRESH_TOKEN
+      optional:
+        - GOOGLE_TASKS_ACCESS_TOKEN
+    config:
+      env: GOOGLE_TASKS_ACCESS_TOKEN
+      type: oauth
+      domains:
+        - tasks.googleapis.com
+        - "*.googleapis.com"
+      placement:
+        type: header
+        name: Authorization
+        format: "Bearer {token}"
+      refreshEnv: GOOGLE_TASKS_REFRESH_TOKEN
+      refreshUrl: https://oauth2.googleapis.com/token
+      clientIdEnv: GOOGLE_TASKS_CLIENT_ID
+      clientSecretEnv: GOOGLE_TASKS_CLIENT_SECRET
+
+# Sandbox permissions
+permissions:
+  fs.read: []
+  fs.write: []
+  network:
+    - tasks.googleapis.com
+    - oauth2.googleapis.com
+  modules:
+    - fs
+    - path
+  system: []
+
+# Platform compatibility
+platforms:
+  - darwin
+  - linux
+  - win32
+
+engines:
+  node: ">=16.0.0"
+
+# Metadata
+keywords:
+  - tasks
+  - google
+  - oauth
+  - todo
+  - productivity
+  - gtd
+
+category: productivity
+icon: "📋"
