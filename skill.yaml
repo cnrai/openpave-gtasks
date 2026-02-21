@@ -6,12 +6,12 @@ version: 1.0.0
 description: Manage Google Tasks securely using OAuth
 
 author:
-  name: OpenPave
-  url: https://github.com/openpave
+  name: cnrai
+  url: https://github.com/cnrai/openpave-gtasks
 
 license: MIT
-homepage: https://github.com/openpave/pave-gtasks
-repository: openpave/pave-gtasks
+homepage: https://github.com/cnrai/openpave-gtasks
+repository: cnrai/openpave-gtasks
 
 # Execution pattern
 pattern: sandbox
