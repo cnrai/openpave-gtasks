@@ -2,7 +2,7 @@
 # Manage Google Tasks securely using OAuth
 
 name: gtasks
-version: 1.0.0
+version: 1.1.0
 description: Manage Google Tasks securely using OAuth
 
 author:
@@ -146,6 +146,13 @@ tokens:
         - GOOGLE_TASKS_REFRESH_TOKEN
       optional:
         - GOOGLE_TASKS_ACCESS_TOKEN
+    # OAuth authorization flow configuration (for web UI authentication)
+    oauth:
+      provider: google
+      authorizeUrl: https://accounts.google.com/o/oauth2/v2/auth
+      scopes:
+        - https://www.googleapis.com/auth/tasks.readonly
+        - https://www.googleapis.com/auth/tasks
     config:
       env: GOOGLE_TASKS_ACCESS_TOKEN
       type: oauth
