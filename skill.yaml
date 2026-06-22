@@ -2,7 +2,7 @@
 # Manage Google Tasks securely using OAuth
 
 name: gtasks
-version: 1.1.0
+version: 1.2.0
 description: Manage Google Tasks securely using OAuth
 
 author:
@@ -23,14 +23,12 @@ commands:
     description: Show authentication status
     options:
       - --summary
-      - --json
 
   - name: lists
     description: List all task lists
     options:
       - --max <number>
       - --summary
-      - --json
 
   - name: tasks
     description: List tasks in a task list
@@ -43,7 +41,6 @@ commands:
       - --all
       - --summary
       - --full
-      - --json
 
   - name: add
     description: Create a new task
@@ -54,7 +51,6 @@ commands:
       - -n, --notes <notes>
       - -d, --due <date>
       - --summary
-      - --json
 
   - name: get
     description: Get task details
@@ -63,7 +59,6 @@ commands:
       - <taskId>
     options:
       - --summary
-      - --json
 
   - name: update
     description: Update a task
@@ -75,7 +70,6 @@ commands:
       - -n, --notes <notes>
       - -d, --due <date>
       - --summary
-      - --json
 
   - name: complete
     description: Mark task as complete
@@ -84,7 +78,6 @@ commands:
       - <taskId>
     options:
       - --summary
-      - --json
 
   - name: uncomplete
     description: Mark task as incomplete
@@ -93,7 +86,6 @@ commands:
       - <taskId>
     options:
       - --summary
-      - --json
 
   - name: delete
     description: Delete a task
@@ -103,7 +95,6 @@ commands:
     options:
       - --yes
       - --summary
-      - --json
 
   - name: clear
     description: Clear completed tasks
@@ -112,7 +103,6 @@ commands:
     options:
       - --yes
       - --summary
-      - --json
 
   - name: create-list
     description: Create a new task list
@@ -120,7 +110,6 @@ commands:
       - <title>
     options:
       - --summary
-      - --json
 
   - name: delete-list
     description: Delete a task list
@@ -129,7 +118,6 @@ commands:
     options:
       - --yes
       - --summary
-      - --json
 
 # Token configuration for secure sandbox access
 tokens:
